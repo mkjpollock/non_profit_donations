@@ -4,5 +4,6 @@ Donation::Application.routes.draw do
   resources :users
   resources :companies
   resources :contributions
+  resources :subscriptions
 
 end

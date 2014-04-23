@@ -1,0 +1,26 @@
+<% if @company.name %>
+  <h2><%= @company.name %></h2>
+  <h4><%= @company.description %></h4>
+
+  <%= form_tag subscriptions_path do %>
+    <article>
+      <div class="form-group">
+        <%= radio_button_tag(:plan, "crabby-month") %>
+        <%= label_tag(:plan, "Crab Friends - $35,000 per month") %>
+      </div>
+      <div class="form-group">
+        <%= radio_button_tag(:plan, "crabby-year") %>
+        <%= label_tag(:plan, "SUPER Crab Friends - $777,777.77 per year") %>
+      </div>
+      <%= hidden_field_tag :company_id, @company.id %>
+    </article>
+
+    <br>
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+            data-description="Pay me my money!!!!"></script>
+  <% end %>
+<% else %>
+  <h1>YOU SHALL NOT PASS!!!!!</h1>
+  <%= link_to "Return to Companies", companies_path, class: "btn btn-primary btn-lg" %>
+<% end %>
