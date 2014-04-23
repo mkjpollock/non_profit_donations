@@ -1,5 +1,10 @@
 require 'spec_helper'
 
 describe Contribution do
-  pending "add some examples to (or delete) #{__FILE__}"
+  StripeMock.start
+    customer = Stripe::Customer.create(
+    :email => 'me@me.com',
+    :card => 'valid_card_token'
+  )
+
 end

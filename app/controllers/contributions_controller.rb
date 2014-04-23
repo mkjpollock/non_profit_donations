@@ -6,7 +6,7 @@ class ContributionsController < ApplicationController
 
   def create
     # Amount in cents
-    @amount = params[:amount]
+    @amount = params[:amount].to_i * 100
     @company = Company.find(params[:company_id])
 
     customer = Stripe::Customer.create(
