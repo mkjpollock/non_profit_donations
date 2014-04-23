@@ -13,7 +13,7 @@ class SubscriptionsController < ApplicationController
       :plan => @plan,
       :email => params[:stripeEmail]
     )
-    flash[:notice] = "Donation accepted!"
+    flash[:notice] = "You're going to have a #{@plan}!"
     redirect_to :back
   rescue Stripe::CardError => e
     flash[:error] = e.message

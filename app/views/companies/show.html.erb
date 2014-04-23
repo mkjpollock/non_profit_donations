@@ -2,11 +2,15 @@
 
 <p> <%= @company.description %> </p>
 
-  <%= link_to "Edit Product", edit_company_path, :class=> "btn btn-warning" %>
-  <%= link_to "Delete", company_path(@company),
-                      :confirm => "You sure?",
-                      :method => "delete",
-                      :class => "btn btn-danger" %>
-  <%= link_to "One Time Donation!", new_contribution_path(id: @company.id), :class=> "btn btn-success" %>
-  <%= link_to "Recurring Donation!", new_subscription_path(id: @company.id), :class=> "btn btn-primary" %>
+  <% if current_user && current_user.id == @company.user_id %>
+    <%= link_to "Create Recurring Plans", new_plan_path(id: @company.id), :class=> "btn btn-info" %>
+    <%= link_to "Edit Company", edit_company_path, :class=> "btn btn-warning" %>
+    <%= link_to "Delete", company_path(@company),
+                        :confirm => "You sure?",
+                        :method => "delete",
+                        :class => "btn btn-danger" %>
+  <% else %>
+    <%= link_to "One Time Donation!", new_contribution_path(id: @company.id), :class=> "btn btn-success" %>
+    <%= link_to "Recurring Donation!", new_subscription_path(id: @company.id), :class=> "btn btn-primary" %>
+  <% end %>
 

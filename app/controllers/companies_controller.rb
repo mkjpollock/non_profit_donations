@@ -1,4 +1,5 @@
 class CompaniesController < ApplicationController
+  before_filter :authenticate_user!, only: [:new, :create]
 
   def index
     @companies = Company.all
@@ -43,6 +44,6 @@ class CompaniesController < ApplicationController
 private
 
   def company_params
-    params.require(:company).permit(:name, :description)
+    params.require(:company).permit(:name, :description, :user_id)
   end
 end

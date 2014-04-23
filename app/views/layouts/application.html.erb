@@ -11,8 +11,8 @@
  <div class="container" id="main">
     <div class="navbar navbar-default navbar-fixed-top">
     <%= link_to "Home", root_url, class: "navbar-brand pull-left" %>
-    <%= link_to "Create Company", new_company_path, class: "navbar-text pull-left" %>
     <% if user_signed_in? %>
+      <%= link_to "Create Company", new_company_path, class: "navbar-text pull-left" %>
       <%= link_to "Log Out", destroy_user_session_path, method: "delete", class: "navbar-text pull-right" %>
       <div class="navbar-text pull-right">
         Logged in as &nbsp; <%= link_to current_user.email, user_path(current_user) %>

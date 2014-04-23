@@ -5,5 +5,6 @@
   <div class="form-group">
     <%= f.text_area :description, cols: 35, rows: 7,placeholder: "Description" %>
   </div>
+  <%= f.hidden_field :user_id, value: current_user.id if current_user %>
   <%= f.submit class: "btn btn-success" %>
 <% end %>

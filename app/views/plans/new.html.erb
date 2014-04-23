@@ -1,0 +1,23 @@
+<% if @company.name %>
+  <h2><%= @company.name %></h2>
+  <h4><%= @company.description %></h4>
+
+  <h1>Create a new subcription plan</h1>
+    <article>
+    <%= form_for @plan do |f| %>
+      <div class="form-group">
+        <%= f.text_field :name, placeholder: "Plan Name" %>
+      </div>
+      <div class="form-group">
+        <%= f.text_field :amount, placeholder: "Amount" %>
+        <%= f.select :interval, intervals %>
+        <%= f.select :currency, currency %>
+      </div>
+      <%= f.hidden_field :company_id, value: @company.id %>
+      <%= f.submit class: "btn btn-danger btn-lg" %>
+    <% end %>
+    </article>
+<% else %>
+  <h1>YOU SHALL NOT PASS!!!!!</h1>
+  <%= link_to "Return to Companies", companies_path, class: "btn btn-primary btn-lg" %>
+<% end %>
