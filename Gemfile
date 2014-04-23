@@ -14,6 +14,7 @@ gem 'bcrypt'
 gem 'devise'
 gem 'textacular'
 gem 'rest-client'
+gem 'stripe'
 
 group :development do
   gem 'better_errors'

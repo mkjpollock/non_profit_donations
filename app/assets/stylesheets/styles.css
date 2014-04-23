@@ -10,10 +10,16 @@
 }
 
 #flash_notice {
+  color: white;
   background-color: green;
 
 }
 
 #flash_error {
+  color: white;
   background-color: red;
+}
+
+.margin-high {
+  margin-top: 10px;
 }
