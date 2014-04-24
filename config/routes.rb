@@ -6,5 +6,5 @@ Donation::Application.routes.draw do
   resources :contributions
   resources :subscriptions
   resources :plans
-
+  resources :recipients
 end
