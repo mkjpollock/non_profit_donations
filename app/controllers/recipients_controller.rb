@@ -5,21 +5,18 @@ class RecipientsController < ApplicationController
   end
 
   def create
-    token = Stripe::Token.create(
-        :bank_account => {
-        :country => params[:country],
-        :routing_number => params[:routing],
-        :account_number => params[:account],
-      },
-    )
     recipient = Stripe::Recipient.create(
       :name => params[:name],
       :type => params[:type],
       :email => params[:email],
-      :bank_account => token
+      :bank_account => {
+        :country => params[:country],
+        :routing_number => params[:routing],
+        :account_number => params[:account]
+      }
     )
     transfer = Stripe::Transfer.create(
-      :amount => params[:amount], # amount in cents
+      :amount => params[:amount].to_i * 100, # amount in cents
       :currency => params[:currency],
       :recipient => recipient,
       :statement_description => params[:description]
