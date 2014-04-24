@@ -4,6 +4,7 @@
 
   <% if current_user && current_user.id == @company.user_id %>
     <%= link_to "Create Recurring Plans", new_plan_path(id: @company.id), :class=> "btn btn-info" %>
+    <%= link_to "Transfer Money", new_recipient_path(id: @company.id), :class=> "btn btn-success" %>
     <%= link_to "Edit Company", edit_company_path, :class=> "btn btn-warning" %>
     <%= link_to "Delete", company_path(@company),
                         :confirm => "You sure?",
